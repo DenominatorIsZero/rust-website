@@ -84,6 +84,21 @@ pub async fn index(templates: web::Data<tera::Tera>) -> impl Responder {
 
     context.insert("posts", &frontmatters);
 
+    // temporary - move to default function later
+
+    context.insert("nav_site_href", "/");
+    context.insert("root_uri", "/");
+    context.insert("linkedin_uri", "linkedin");
+    context.insert("github_uri", "github");
+    context.insert("resume_uri", "resume");
+    context.insert("blog_uri", "blog");
+    context.insert("domain_name", "erik-engelhardt.com");
+    context.insert("internet_handle", "Erik Engelhardt");
+    context.insert("web_sep", " | ");
+    context.insert("my_email", "erik.raik.engelhardt@gmail.com");
+    context.insert("full_name", "Erik Raik Engelhardt");
+    context.insert("title", "This is a test.");
+
     match templates.render("home.html", &context) {
         Ok(s) => HttpResponse::Ok().content_type("text/html").body(s),
         Err(e) => {

@@ -1,5 +1,5 @@
 use actix_files::Files; // new line
-use actix_web::{dev::Server, middleware, web, App, HttpResponse, HttpServer};
+use actix_web::{dev::Server, middleware, web, App, HttpServer};
 use std::net::TcpListener;
 use tera::Tera;
 pub mod handlers;

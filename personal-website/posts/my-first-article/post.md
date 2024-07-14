@@ -48,3 +48,7 @@ Classis vocatur, illum: suarum [ex iniectos sequuntur](http://parmovit.com/)
 virus; vires, pes et sive cui veneratur dextra. Ut inde parabam non isque cornua
 inpervius ardor trepidumque corque quaerens loqui, ingrediorque. Separat audet
 [perdere si](http://scilicet-et.net/) collis seque: nec cum alimenta, aristas!
+
+'''rust
+let test = hello?
+'''

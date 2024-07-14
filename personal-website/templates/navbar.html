@@ -1,0 +1,34 @@
+<nav class="navbar-light navbar-expand-sm bg-light light-padding">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+            <div class="container monospace">
+                <div class="row">
+                    <div class="col-sm tight-column {% if nav_site_href == root_uri %} navbar-underlined {% endif %}">
+                        <a class="nav-link" href="{{ root_uri }}">
+                            Home
+                            <span class="sr-only">({{ domain_name }})</span>
+                        </a>
+                    </div>
+                    <div
+                        class="col-sm tight-column {% if nav_site_href == linkedin_uri %} navbar-underlined {% endif %}">
+                        <a class="nav-link" href="{{ linkedin_uri }}"> LinkedIn <span
+                                class="sr-only">(current)</span></a>
+                    </div>
+                    <div class="col-sm tight-column {% if nav_site_href == github_uri %} navbar-underlined {% endif %}">
+                        <a class="nav-link" href="{{ github_uri }}"> Github <span class="sr-only">(current)</span></a>
+                    </div>
+                    <div class="col-sm tight-column {% if nav_site_href == resume_uri %} navbar-underlined {% endif %}">
+                        <a class="nav-link" href="{{ resume_uri }}"> Resume <span class="sr-only">(current)</span></a>
+                    </div>
+                    <div class="col-sm tight-column {% if nav_site_href == blog_uri %} navbar-underlined {% endif %}">
+                        <a class="nav-link" href="{{ blog_uri }}"> Blog <span class="sr-only">(current)</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,21 +1,32 @@
-{% extends "base.html" %}
-{% block title %}Awesome blog | by DeveloperMan{% endblock title %}
-{% block content %}
-<div class="w-full h-full px-4 md:px-6 text-xl text-gray-800 leading-normal">
-    <h1 class="text-center text-3xl">All about tech</h1>
-    <h3 class="text-center text-lg mt-2 text-gray-600">More words describing the blog here</h3>
-    {% for fm in posts %}
-    <a class="mb-3" href="/posts/{{fm.file_name}}">
-        <div class="flex flex-col mb-5 px-4 py-6 cursor-pointer">
-            <h2 class="text-2xl font-semibold hover:underline">{{fm.title}}</h2>
-            <div class="flex items-center mt-2">
-                <p class="hidden md:block text-base ml-2 mr-2">{{fm.posted}}</p>
-                <p class="hidden md:block text-base mx-2">{{fm.author}}</p>
-                <p class="text-base ml-0 md:ml-2">Reading time:
-                    {{fm.estimated_reading_time}} min</p>
-            </div>
-        </div>
-    </a>
-    {% endfor %}
+{% extends "centerpage.html" %}
+
+{% block centerpage %}
+<h3> {{ internet_handle }} | <a href="#"> Home<span class="sr-only">(current)</span></a></h3>
+<span> {{ full_name }} {{ web_sep }} {{ my_email }} </span>
+<br>
+<br>
+Hi, I'm a SWE turned SRE @ <b>Google</b> and a computer science graduate from the University of Waterloo.
+I currently work on core cryptographic systems and make sure they never fall over.
+<br>
+<br>
+I have worked in <b>Security & Reliability</b>, <b>Security Orchestration & Automation</b>, <b>Ad Tech</b>,
+<b>Healthcare</b>, and
+<b>Enterprise R&D</b>.
+<br>
+<br>
+I've also <b>contracted</b> as well; making sure deliverables arrive on time and quickly integrating myself into the
+team.
+<br>
+<br>
+My go-to languages include <b>Python</b>, <b>Rust</b>, <b>Bash</b>, <b>C++</b>, and <b>Scala</b>.
+My go-to tech includes <b>Django</b>, <b>Kubernetes</b>, <b>Docker</b>, and <b>React</b>.
+Check out my
+<a href="/resume">Resume<span class="sr-only">(Resume)</span></a>
+or <a href="/github">Github<span class="sr-only">(Github)</span></a> for more details.
+<br>
+<br>
+If you're interested, I blog about random tech related things.
+You can check out my blog
+<a href="/blog">here<span class="sr-only">(blog)</span></a>.
 </div>
-{% endblock content %}
+{% endblock centerpage %}
