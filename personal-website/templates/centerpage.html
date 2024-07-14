@@ -1,16 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="monospace">
-    <div>
-        <div class="container-fluid center-desktop d-flex h-100">
-            <div class="row align-items-center w-100">
-                <div class="align-self-center bordered mx-auto index-card monospace" style="text-decoration: none">
-                    {% block centerpage %}
-                    {% endblock centerpage %}
-                </div>
-            </div>
-        </div>
+<div class="flex items-center justify-center min-h-screen">
+    <div class="border-4 border-gray-100 p-6">
+        {% block centerpage %}
+        {% endblock centerpage %}
     </div>
 </div>
 {% endblock content %}
