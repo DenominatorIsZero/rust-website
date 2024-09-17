@@ -96,7 +96,7 @@ pub async fn index(templates: web::Data<tera::Tera>) -> impl Responder {
     context.insert("internet_handle", "Erik Engelhardt");
     context.insert("web_sep", " | ");
     context.insert("my_email", "erik.raik.engelhardt@gmail.com");
-    context.insert("full_name", "Erik Raik Engelhardt");
+    context.insert("full_name", "Erik Engelhardt");
     context.insert("title", "This is a test.");
 
     match templates.render("home.html", &context) {
