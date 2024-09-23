@@ -1,6 +1,12 @@
 to run locally:
 cargo run
+or for hot reload:
+cargo watch -x run
 127.0.0.1:8080
+
+tailwind:
+cd tailwind
+npm run watch-css
 
 docker local:
 docker build -t actix-web-app .
