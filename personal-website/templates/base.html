@@ -11,15 +11,14 @@
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 </head>
 
-<body class="flex flex-col justify-between min-h-screen">
-    <div class="h-16">{% block header %}{% endblock header %}</div>
+<body class="flex flex-col min-h-screen justify-between m-0 p-0">
     {% include "navbar.html" %}
-    <main class="container flex-1 w-full md:max-w-3xl mx-auto overflow-x-hidden">
+    <main class="container max-w-3xl mx-auto overflow-x-hidden px-4">
         {% block content %}{% endblock content %}
     </main>
     {% block footer %}
     <div class="flex w-full h-20 justify-center items-center">
-        &copy; 2024 by <a href="https://erik-engelhardt.com/">Erik Engelhardt</a>.
+        &copy; 2024 by&nbsp;<a href="https://erik-engelhardt.com/">Erik Engelhardt</a>.
     </div>
     {% endblock footer %}
 </body>
