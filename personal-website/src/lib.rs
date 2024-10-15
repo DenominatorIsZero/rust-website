@@ -27,6 +27,8 @@ pub fn start_blog(listener: TcpListener) -> Result<Server, std::io::Error> {
             .wrap(middleware::Logger::default()) // enable logger
             .service(Files::new("/static", "static/").use_last_modified(true)) // new line
             .service(handlers::index)
+            .service(handlers::blog)
+            .service(handlers::publications)
             .service(handlers::post)
     })
     .listen(listener)?

@@ -37,7 +37,7 @@ fn extract_frontmatter(post_name: &str) -> Result<Frontmatter, Error> {
     Ok(frontmatter)
 }
 
-#[get("/posts/{post_name}")]
+#[get("/blog/{post_name}")]
 pub async fn post(tmpl: web::Data<tera::Tera>, post_name: web::Path<String>) -> impl Responder {
     let mut context = tera::Context::new();
     let options = Options::empty(); // used as part of pulldown_cmark for setting flags to enable extra features - we're not going to use any of those, hence the `empty();`
