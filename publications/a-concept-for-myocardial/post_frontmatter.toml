@@ -1,0 +1,28 @@
+title = "A Concept for Myocardial Current Density Estimation with Magnetoelectric Sensors"
+authors = ["Erik Engelhardt", "Eric Elzenheimer", "Johannes Hoffmann", "Tobias Schmidt", "Adrian Zaman", "Norbert Frey", "Gerhard Schmidt"]
+abstract = """
+We present a novel noninvasive approach to estimate cardiac current densities using magnetocardiography (MCG). Our algorithm utilizes nested optimization and first-order Thiran all-pass filters to model current propagation between equally-sized myocardial voxels, showing potential to complement or replace invasive catheter-based procedures for localizing arrhythmogenic tissue.
+"""
+date = "2023-09-20"
+publication_type = "Conference Article"
+venue = "Current Directions in Biomedical Engineering"
+doi = "10.1515/cdbme-2023-1023"
+url = "https://doi.org/10.1515/cdbme-2023-1023"
+pdf_url = "https://www.degruyter.com/document/doi/10.1515/cdbme-2023-1023/pdf?licenseType=open-access"
+bibtex = '''
+@inproceedings{engelhardt_concept_2023,
+  title={A Concept for Myocardial Current Density Estimation with Magnetoelectric Sensors},
+  author={Engelhardt, Erik and Elzenheimer, Eric and Hoffman, Johannes and Schmidt, Tobias and Zaman, Adrian and Frey, Norbert and Schmidt, Gerhard},
+  booktitle={Current Directions in Biomedical Engineering},
+  volume={9},
+  number={1},
+  pages={89--92},
+  year={2023},
+  organization={De Gruyter}
+  doi = {10.1515/cdbme-2023-1023}
+}
+'''
+keywords = ["Biomagnetism", "Magnetocardiography", "Magnetoelectric sensors", "Noninvasive cardiac diagnostics"]
+citation = "Engelhardt, E., Elzenheimer, E., Hoffman, J., Schmidt, T., Zaman, A., Frey, N., & Schmidt, G. (2023, September). A Concept for Myocardial Current Density Estimation with Magnetoelectric Sensors. In Current Directions in Biomedical Engineering (Vol. 9, No. 1, pp. 89-92). De Gruyter."
+thumbnail = "/static/img/publications/a-concept-for-myocardial.webp"
+language = "English"

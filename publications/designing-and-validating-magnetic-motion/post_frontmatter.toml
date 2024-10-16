@@ -4,7 +4,7 @@ abstract = """
 We introduce a comprehensive simulation pipeline based on the digital twin concept to facilitate the design and validation of magnetic motion sensing systems. Our approach addresses the hardware and software challenges of establishing setups from scratch, enabling non-contact 3D tracking of position and orientation with applications in human movement analysis.
 """
 date = "2023-09-20"
-publication_type = "Journal Article"
+publication_type = "Conference Article"
 venue = "Current Directions in Biomedical Engineering"
 doi = "10.1515/cdbme-2023-1114"
 url = "https://doi.org/10.1515/cdbme-2023-1114"
