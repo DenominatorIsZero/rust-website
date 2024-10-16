@@ -1,0 +1,28 @@
+title = "Investigation of Converse Magnetoelectric Thin-Film Sensors for Magnetocardiography"
+authors = ["Eric Elzenheimer", "Patrick Hayes", "Lars Thormählen", "Erik Engelhardt", "Adrian Zaman", "Eckhard Quandt", "Norbert Frey", "Michael Höft", "Gerhard Schmidt"]
+abstract = """
+In this paper, we highlight the development of thin-film magnetoelectric (ME) sensors as promising candidates for biomagnetic sensing, specifically in magnetocardiography (MCG). In our pilot study with a healthy volunteer in a magnetically shielded chamber, we applied an ME prototype (converse ME thin-film sensors) for the first time. Our sensor achieved a noise amplitude spectral density below 20 pT/√Hz at 10 Hz using a sophisticated magnetic layer system. We successfully detected the magnetic equivalent of a human R wave within a one-minute measurement period, demonstrating the potential of ME sensors for non-invasive cardiovascular applications.
+"""
+date = "2023-13-15"
+publication_type = "Journal Article"
+venue = "IEEE Sensors"
+doi = "10.1109/JSEN.2023.3237910"
+url = "https://doi.org/10.1109/JSEN.2023.3237910"
+pdf_url = "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10028750"
+bibtex = '''
+@article{elzenheimer2023investigation,
+  title={Investigation of converse magnetoelectric thin-film sensors for magnetocardiography},
+  author={Elzenheimer, Eric and Hayes, Patrick and Thorm{\"a}hlen, Lars and Engelhardt, Erik and Zaman, Adrian and Quandt, Eckhard and Frey, Norbert and H{\"o}ft, Michael and Schmidt, Gerhard},
+  journal={IEEE Sensors Journal},
+  volume={23},
+  number={6},
+  pages={5660--5669},
+  year={2023},
+  publisher={IEEE}
+  doi={10.1109/JSEN.2023.3237910}
+}
+'''
+keywords = ["Sensors", "Magnetoelelectric effects", "Magnetic sensors", "Magnetostriction", "Magnetic shielding", "Magnetic resonance", "Magnetic noise"]
+citation = "Elzenheimer, E., Hayes, P., Thormählen, L., Engelhardt, E., Zaman, A., Quandt, E., ... & Schmidt, G. (2023). Investigation of converse magnetoelectric thin-film sensors for magnetocardiography. IEEE Sensors Journal, 23(6), 5660-5669."
+thumbnail = "/static/img/publications/investigation-of-converse.gif"
+language = "English"
