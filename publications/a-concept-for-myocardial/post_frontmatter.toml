@@ -24,5 +24,5 @@ bibtex = '''
 '''
 keywords = ["Biomagnetism", "Magnetocardiography", "Magnetoelectric sensors", "Noninvasive cardiac diagnostics"]
 citation = "Engelhardt, E., Elzenheimer, E., Hoffman, J., Schmidt, T., Zaman, A., Frey, N., & Schmidt, G. (2023, September). A Concept for Myocardial Current Density Estimation with Magnetoelectric Sensors. In Current Directions in Biomedical Engineering (Vol. 9, No. 1, pp. 89-92). De Gruyter."
-thumbnail = "/static/img/publications/a-concept-for-myocardial.webp"
+thumbnail = "/static/img/publications/a-concept-for-myocardial.png"
 language = "English"

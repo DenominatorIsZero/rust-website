@@ -1,0 +1,29 @@
+title = "Towards Analytically Computable Quality Classes for MCG Sensor Systems"
+authors = ["Erik Engelhardt", "Adrian Zaman", "Eric Elzenheimer", "Norbert Frey", "Gerhard Schmidt"]
+abstract = """
+We investigate the relationship between quantitative signal quality metrics—specifically signal-to-noise ratio (SNR) and application-specific capacity (ASC)—and the subjective evaluations of cardiologists using magnetocardiography (MCG) signals. By defining four quality classes and comparing noisy prototype signals, we demonstrate that it is plausible to predict qualitative assessments from these quantitative metrics, which can help manufacturers optimize MCG sensor systems and assist users in selecting the most suitable equipment for their applications.
+"""
+date = "2022-09-02"
+publication_type = "Conference Article"
+venue = "Current Directions in Biomedical Engineering"
+doi = "10.1515/cdbme-2022-1176"
+url = "https://doi.org/10.1515/cdbme-2022-1176"
+pdf_url = "https://www.degruyter.com/document/doi/10.1515/cdbme-2022-1176/pdf?licenseType=open-access"
+bibtex = '''
+@inproceedings{engelhardt_towards_2022,
+  title={Towards analytically computable quality classes for MCG sensor systems},
+  author={Engelhardt, Erik and Zaman, Adrian and Elzenheimer, Eric and Frey, Norbert and Schmidt, Gerhard},
+  booktitle={Current Directions in Biomedical Engineering},
+  volume={8},
+  number={2},
+  pages={691--694},
+  year={2022},
+  organization={De Gruyter}
+  doi={10.1515/cdbme-2022-1176}
+}
+}
+'''
+keywords = ["MCG", "ECG", "Sensor system characterization", "Sensor System Performance", "Quality Classes", "Biomagnetic sensors"]
+citation = "Engelhardt, E., Zaman, A., Elzenheimer, E., Frey, N., & Schmidt, G. (2022, September). Towards analytically computable quality classes for MCG sensor systems. In Current Directions in Biomedical Engineering (Vol. 8, No. 2, pp. 691-694). De Gruyter."
+thumbnail = "/static/img/publications/towards-analytically-computable.png"
+language = "English"
