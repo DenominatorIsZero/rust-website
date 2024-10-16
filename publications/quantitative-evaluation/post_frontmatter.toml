@@ -1,0 +1,28 @@
+title = "Investigation of Converse Magnetoelectric Thin-Film Sensors for Magnetocardiography"
+authors = ["Eric Elzenheimer", "Christin Bald", "Erik Engelhardt", "Johannes Hoffmann", "Patrick Hayes", "Johan Arbustini", "Andreas Bahr", "Eckhard Quandt", "Michael Höft", "Gerhard Schmidt"]
+abstract = """
+We highlight metrics for quantitatively characterizing thin-film magnetoelectric (ME) sensor systems and their output signals in biomagnetism. We present an ME sensor system evaluation scheme performed under reproducible conditions, applying it to two ME sensors—a resonant ME sensor and an electrically modulated ME sensor. By introducing an application-specific capacity (ASC) as a figure of merit and comparing signal-to-noise ratios (SNRs), we demonstrate that the electrically modulated ME sensor is better suited for magnetocardiography (MCG) applications under ideal conditions. Our approach is transferable to other magnetic sensors and applications, aiding in the optimization and selection of sensor systems for medical use.
+"""
+date = "2022-12-10"
+publication_type = "Journal Article"
+venue = "Sensors"
+doi = "10.3390/s22031018"
+url = "https://doi.org/10.3390/s22031018"
+pdf_url = "https://www.mdpi.com/1424-8220/22/3/1018/pdf?version=1643531998"
+bibtex = '''
+@article{elzenheimer2022quantitative,
+  title={Quantitative evaluation for magnetoelectric sensor systems in biomagnetic diagnostics},
+  author={Elzenheimer, Eric and Bald, Christin and Engelhardt, Erik and Hoffmann, Johannes and Hayes, Patrick and Arbustini, Johan and Bahr, Andreas and Quandt, Eckhard and H{\"o}ft, Michael and Schmidt, Gerhard},
+  journal={Sensors},
+  volume={22},
+  number={3},
+  pages={1018},
+  year={2022},
+  publisher={MDPI}
+  doi={10.3390/s22031018}
+}
+'''
+keywords = ["Application specific signal evaluation", "Magnetoelectric sensors", "Quantitative sensor system characterization", "Sensor system performance"]
+citation = "Elzenheimer, E., Bald, C., Engelhardt, E., Hoffmann, J., Hayes, P., Arbustini, J., ... & Schmidt, G. (2022). Quantitative evaluation for magnetoelectric sensor systems in biomagnetic diagnostics. Sensors, 22(3), 1018."
+thumbnail = "/static/img/publications/quantitative-evaluation.png"
+language = "English"
