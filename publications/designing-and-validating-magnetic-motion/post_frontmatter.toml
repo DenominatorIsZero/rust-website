@@ -1,0 +1,28 @@
+title = "Designing and Validating Magnetic Motion Sensing Approaches with a Real-time Simulation Pipeline"
+authors = ["Johnanes Hoffmann", "Christin Bald", "Tobias Schmidt", "Moritz Boueke", "Erik Engelhardt", "Karolin Krüger", "Erik Elzenheimer", "Clint Hansen", "Walter Maetzler", "Gerhard Schmidt"]
+abstract = """
+We introduce a comprehensive simulation pipeline based on the digital twin concept to facilitate the design and validation of magnetic motion sensing systems. Our approach addresses the hardware and software challenges of establishing setups from scratch, enabling non-contact 3D tracking of position and orientation with applications in human movement analysis.
+"""
+date = "2023-09-20"
+publication_type = "Journal Article"
+venue = "Current Directions in Biomedical Engineering"
+doi = "10.1515/cdbme-2023-1114"
+url = "https://doi.org/10.1515/cdbme-2023-1114"
+pdf_url = "https://www.degruyter.com/document/doi/10.1515/cdbme-2023-1114/pdf?licenseType=open-access"
+bibtex = '''
+@inproceedings{hoffmann_designing_2023,
+  title={Designing and Validating Magnetic Motion Sensing Approaches with a Real-time Simulation Pipeline},
+  author={Hoffmann, Johannes and Bald, Christin and Schmidt, Tobias and Boueke, Moritz and Engelhardt, Erik and Kr{\"u}ger, Karolin and Elzenheimer, Eric and Hansen, Clint and Maetzler, Walter and Schmidt, Gerhard},
+  booktitle={Current Directions in Biomedical Engineering},
+  volume={9},
+  number={1},
+  pages={455--458},
+  year={2023},
+  organization={De Gruyter}
+  doi = {10.1515/cdbme-2023-1114}
+}
+'''
+keywords = ["Ditigal twin", "Localization", "Magnetic methods", "Magnetoelectric sensors", "Motion sensing"]
+citation = "Hoffmann, J., Bald, C., Schmidt, T., Boueke, M., Engelhardt, E., Krüger, K., ... & Schmidt, G. (2023, September). Designing and Validating Magnetic Motion Sensing Approaches with a Real-time Simulation Pipeline. In Current Directions in Biomedical Engineering (Vol. 9, No. 1, pp. 455-458). De Gruyter."
+thumbnail = "/static/img/publications/designing-and-validating-magnetic-motion.png"
+language = "English"
