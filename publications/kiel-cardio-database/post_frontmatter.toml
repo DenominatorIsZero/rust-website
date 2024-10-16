@@ -1,0 +1,23 @@
+title = "Kiel Cardio Database"
+authors = ["Erik Engelhardt", "Norbert Frey", "Gerhard Schmidt"]
+abstract = """
+In this paper, we present the Kiel Cardio Database, containing magnetocardiography (MCG) measurements from seven healthy male volunteers recorded using QuSpin QZFM Gen 1 sensors in a magnetically shielded chamber. By making this dataset publicly available, we aim to enable researchers without access to specialized equipment to advance MCG research.
+"""
+date = "2023-12-15"
+publication_type = "Database Article"
+venue = "PhysioNet"
+doi = "10.13026/q6r2-zz68"
+url = "https://doi.org/10.13026/q6r2-zz68"
+bibtex = '''
+@misc{engelhardt_kiel_2023,
+	title = {Kiel Cardio Database},
+	url = {https://physionet.org/content/kiel-cardio/1.0.0/},
+	doi = {10.13026/Q6R2-ZZ68},
+	publisher = {PhysioNet},
+	author = {Engelhardt, Erik and Frey, Norbert and Schmidt, Gerhard},
+}
+'''
+keywords = ["Database", "Magnetocardiography", "Optically Pumped Magnetometer"]
+citation = "Engelhardt, E., Frey, N., & Schmidt, G. (2023). Kiel Cardio Database (version 1.0.0). PhysioNet. https://doi.org/10.13026/q6r2-zz68."
+thumbnail = "/static/img/publications/kiel-cardio-database.jpg"
+language = "English"

@@ -1,21 +1,10 @@
 use actix_web::{get, web, HttpResponse, Responder};
 use ignore::WalkBuilder;
-use serde::{Deserialize, Serialize};
 use std::{fs, io::Error};
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Frontmatter {
-    title: String,
-    file_name: String,
-    description: String,
-    posted: String,
-    tags: Vec<String>,
-    author: String,
-    estimated_reading_time: u32,
-    order: u32,
-}
+use super::post_handler::BlogPostFrontmatter;
 
-fn find_all_frontmatters() -> Result<Vec<Frontmatter>, std::io::Error> {
+fn find_all_frontmatters() -> Result<Vec<BlogPostFrontmatter>, std::io::Error> {
     let mut t = ignore::types::TypesBuilder::new();
     t.add_defaults();
     let toml = match t.select("toml").build() {
@@ -36,7 +25,7 @@ fn find_all_frontmatters() -> Result<Vec<Frontmatter>, std::io::Error> {
             Ok(fm) => {
                 if fm.path().is_file() {
                     let fm_content = fs::read_to_string(fm.path())?;
-                    let frontmatter: Frontmatter = match toml::from_str(&fm_content) {
+                    let frontmatter: BlogPostFrontmatter = match toml::from_str(&fm_content) {
                         Ok(f) => f,
                         Err(e) => {
                             println!(
@@ -86,18 +75,9 @@ pub async fn index(templates: web::Data<tera::Tera>) -> impl Responder {
 
     // temporary - move to default function later
 
-    context.insert("nav_site_href", "/");
-    context.insert("root_uri", "/");
-    context.insert("linkedin_uri", "linkedin");
-    context.insert("github_uri", "github");
-    context.insert("resume_uri", "resume");
-    context.insert("blog_uri", "blog");
-    context.insert("domain_name", "erik-engelhardt.com");
-    context.insert("internet_handle", "Erik Engelhardt");
     context.insert("web_sep", " | ");
     context.insert("my_email", "erik.raik.engelhardt@gmail.com");
     context.insert("full_name", "Erik Engelhardt");
-    context.insert("title", "This is a test.");
 
     match templates.render("home.html", &context) {
         Ok(s) => HttpResponse::Ok().content_type("text/html").body(s),

@@ -1,0 +1,28 @@
+title = "Non-Invasive Electroanatomical Mapping: A State-Space Approach for Myocardial Current Density Estimation"
+authors = ["Erik Engelhardt", "Eric Elzenheimer", "Johannes Hoffmann", "Christy Meledeth", "Norbert Frey", "Gerhard Schmidt"]
+abstract = """
+We introduce a new system state-based method for non-invasively estimating the electrical activity of the human heart using magnetocardiographic (MCG) measurements. Our algorithm employs a Kalman filter and gradient descent optimization to learn cardiac propagation paths, potentially reducing patient risks associated with invasive procedures and improving treatment planning.
+"""
+date = "2023-12-16"
+publication_type = "Journal Article"
+venue = "Bioengineering"
+doi = "10.3390/bioengineering10121432"
+url = "https://doi.org/10.3390/bioengineering10121432"
+pdf_url = "https://www.mdpi.com/2306-5354/10/12/1432/pdf?version=1702887535"
+bibtex = '''
+@article{engelhardt_noninvasive_2023,
+  title={Non-Invasive Electroanatomical Mapping: A State-Space Approach for Myocardial Current Density Estimation},
+  author={Engelhardt, Erik and Elzenheimer, Eric and Hoffmann, Johannes and Meledeth, Christy and Frey, Norbert and Schmidt, Gerhard},
+  journal={Bioengineering},
+  volume={10},
+  number={12},
+  pages={1432},
+  year={2023},
+  publisher={MDPI},
+  doi = {10.3390/bioengineering10121432}
+}
+'''
+keywords = ["Biomagnetism", "Magnetocardiography", "Non-invasive cardiac diagnostics", "Kalman filter", "Gradient descent optimization"]
+citation = "Engelhardt, E., Elzenheimer, E., Hoffmann, J., Meledeth, C., Frey, N., & Schmidt, G. (2023). Non-Invasive Electroanatomical Mapping: A State-Space Approach for Myocardial Current Density Estimation. Bioengineering, 10(12), 1432."
+thumbnail = "/static/img/publications/non-invasive-elecroanatomical-mapping.webp"
+language = "English"

@@ -1,5 +1,50 @@
 {% extends "centerpage.html" %}
 
 {% block centerpage %}
-Work in progress...
+<h1>Publications</h1>
+<ul>
+    {% for pub in publications %}
+    <li class="mb-8">
+        <!-- Title spanning full width -->
+        <h2 class="text-2xl font-bold mb-4">{{ pub.title }}</h2>
+        <!-- Container for details and thumbnail -->
+        <div class="publication flex flex-wrap md:flex-nowrap items-start gap-4">
+            <!-- Left column: Details -->
+            <div class="details w-full md:w-2/3">
+                <p>
+                    <strong>Authors:</strong>{{ pub.authors | join(sep=", ") }}<br>
+                    <strong>Publication Date:</strong> {{ pub.date }}<br>
+                    <strong>Venue:</strong> {{ pub.venue }}<br>
+                    {% if pub.doi %}
+                    <strong>DOI:</strong> <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{{ pub.doi
+                        }}</a><br>
+                    {% endif %}
+                    {% if pub.keywords %}
+                    <strong>Keywords:</strong> {{ pub.keywords | join(sep=", ") }}<br>
+                    {% endif %}
+                </p>
+                {% if pub.abstract %}
+                <p><strong>Abstract:</strong> {{ pub.abstract }}</p>
+                {% endif %}
+                {% if pub.pdf_url %}
+                <p><a href="{{ pub.pdf_url }}">Download PDF</a></p>
+                {% endif %}
+                {% if pub.bibtex %}
+                <details>
+                    <summary>BibTeX Citation</summary>
+                    <pre class="whitespace-pre-wrap">{{ pub.bibtex }}</pre>
+                </details>
+                {% endif %}
+            </div>
+            <!-- Right column: Thumbnail -->
+            {% if pub.thumbnail %}
+            <div class="thumbnail w-full md:w-1/3 flex justify-center md:justify-end mt-4 md:mt-0">
+                <img src="{{ pub.thumbnail }}" alt="Thumbnail for {{ pub.title }}"
+                    class="max-w-full h-auto cursor-pointer" onclick="openModal(this)">
+            </div>
+            {% endif %}
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock centerpage %}

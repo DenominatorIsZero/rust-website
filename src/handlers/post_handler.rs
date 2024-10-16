@@ -1,7 +1,19 @@
-use super::home_handler::Frontmatter;
 use actix_web::{get, web, HttpResponse, Responder};
 use pulldown_cmark::{html, Options, Parser};
+use serde::{Deserialize, Serialize};
 use std::{fs, io::Error};
+
+#[derive(Serialize, Deserialize, Debug)]
+pub struct BlogPostFrontmatter {
+    pub title: String,
+    pub file_name: String,
+    pub description: String,
+    pub posted: String,
+    pub tags: Vec<String>,
+    pub author: String,
+    pub estimated_reading_time: u32,
+    pub order: u32,
+}
 
 fn extract_markdown(post_name: &str) -> Result<String, Error> {
     let markdown = match fs::read_to_string(format!("./posts/{}/post.md", post_name)) {
@@ -14,7 +26,7 @@ fn extract_markdown(post_name: &str) -> Result<String, Error> {
     Ok(markdown)
 }
 
-fn extract_frontmatter(post_name: &str) -> Result<Frontmatter, Error> {
+fn extract_frontmatter(post_name: &str) -> Result<BlogPostFrontmatter, Error> {
     let frontmatter_input =
         match fs::read_to_string(format!("./posts/{}/post_frontmatter.toml", post_name)) {
             Ok(s) => s,

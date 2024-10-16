@@ -21,6 +21,53 @@
         &copy; 2024 by&nbsp;<a href="https://erik-engelhardt.com/">Erik Engelhardt</a>.
     </div>
     {% endblock footer %}
+    <!-- Image Modal -->
+    <div id="imageModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-gray-700 transition-opacity duration-300">
+        <span class="absolute top-4 right-4 text-white text-3xl cursor-pointer" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Expanded Image" class="max-w-full max-h-full">
+    </div>
 </body>
 
 </html>
+
+<script>
+    function openModal(image) {
+        var modal = document.getElementById('imageModal');
+        var modalImg = document.getElementById('modalImage');
+
+        modalImg.src = image.src;
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        modal.classList.add('opacity-0');
+
+        // Force a reflow to ensure the opacity class is applied
+        void modal.offsetWidth;
+
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+
+    }
+
+    function closeModal() {
+        var modal = document.getElementById('imageModal');
+
+        modal.classList.add('opacity-0');
+        modal.classList.remove('opacity-100');
+
+        setTimeout(function () {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }, 300); // Match the duration of the transition
+    }
+    // Close the modal when clicking outside the image
+    window.addEventListener('click', function (event) {
+        var modal = document.getElementById('imageModal');
+        var modalImg = document.getElementById('modalImage');
+
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+</script>
