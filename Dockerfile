@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y libssl-dev
 # Copy the compiled binary from the builder stage
 COPY --from=builder /usr/src/app/target/release/personal-website /usr/local/bin/personal-website
 COPY ./posts /posts
+COPY ./publications /publications
 COPY ./static /static
 COPY ./templates /templates
 
