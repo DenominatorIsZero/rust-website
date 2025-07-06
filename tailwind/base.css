@@ -28,3 +28,19 @@
     @apply text-xl font-bold mb-3 mt-3;
   }
 }
+
+@layer components {
+  /* Consent banner buttons */
+  .consent-btn-accept {
+    @apply px-4 py-2 bg-green-500 hover:bg-green-400 rounded text-sm transition-colors;
+  }
+  
+  .consent-btn-reject {
+    @apply px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded text-sm transition-colors;
+  }
+  
+  /* Privacy settings toggle button */
+  .privacy-toggle-btn {
+    @apply px-3 py-1 bg-green-500 hover:bg-green-400 rounded text-sm text-white transition-colors cursor-pointer;
+  }
+}

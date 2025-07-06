@@ -10,12 +10,131 @@
     {% endblock head %}
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <script>
-        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init Ie Ts Ms Ee Es Rs capture Ge calculateEventProperties Os register register_once register_for_session unregister unregister_for_session js getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ds Fs createPersonProfile Ls Ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Cs debug I As getPageViewId captureTraceFeedback captureTraceMetric".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
-        posthog.init('phc_oPXS4I08n2TakqavgbpWkH16iME2iE2j94eTzpaj4tp', {
-            api_host: 'https://eu.i.posthog.com',
-            defaults: '2025-05-24',
-            person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
-        })
+        // Consent Management
+        function hasConsent() {
+            const consent = localStorage.getItem('analytics-consent');
+            const consentDate = localStorage.getItem('analytics-consent-date');
+
+            if (!consent || !consentDate) return false;
+
+            // Check if consent is older than 12 months
+            const consentTime = new Date(consentDate).getTime();
+            const oneYearAgo = new Date().getTime() - (365 * 24 * 60 * 60 * 1000);
+
+            if (consentTime < oneYearAgo) {
+                localStorage.removeItem('analytics-consent');
+                localStorage.removeItem('analytics-consent-date');
+                return false;
+            }
+
+            return consent === 'true';
+        }
+
+        function setConsent(accepted) {
+            localStorage.setItem('analytics-consent', accepted.toString());
+            localStorage.setItem('analytics-consent-date', new Date().toISOString());
+
+            if (accepted) {
+                initializePostHog();
+            }
+
+            hideConsentBanner();
+        }
+
+        function showConsentBanner() {
+            document.getElementById('consentBanner').classList.remove('hidden');
+        }
+
+        function hideConsentBanner() {
+            document.getElementById('consentBanner').classList.add('hidden');
+        }
+
+        function initializePostHog() {
+            !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init Ie Ts Ms Ee Es Rs capture Ge calculateEventProperties Os register register_once register_for_session unregister unregister_for_session js getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Ds Fs createPersonProfile Ls Ps opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Cs debug I As getPageViewId captureTraceFeedback captureTraceMetric".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+            posthog.init('phc_oPXS4I08n2TakqavgbpWkH16iME2iE2j94eTzpaj4tp', {
+                api_host: 'https://eu.i.posthog.com',
+                defaults: '2025-05-24',
+                person_profiles: 'identified_only',
+            });
+        }
+
+        function showPrivacyModal() {
+            const modal = document.getElementById('privacyModal');
+            updatePrivacyModalContent();
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function hidePrivacyModal() {
+            const modal = document.getElementById('privacyModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function updatePrivacyModalContent() {
+            const statusText = document.getElementById('consentStatusText');
+            const toggleBtn = document.getElementById('toggleBtnText');
+            const currentConsent = hasConsent();
+
+            if (currentConsent) {
+                statusText.textContent = 'Enabled';
+                toggleBtn.textContent = 'Disable';
+            } else {
+                statusText.textContent = 'Disabled';
+                toggleBtn.textContent = 'Enable';
+            }
+        }
+
+        function toggleConsent() {
+            const currentConsent = hasConsent();
+            const newConsent = !currentConsent;
+
+            setConsent(newConsent);
+            updatePrivacyModalContent();
+
+            // Show user feedback
+            const statusText = document.getElementById('consentStatusText');
+            statusText.textContent = newConsent ? 'Enabled' : 'Disabled';
+        }
+
+        // Initialize consent checking on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            if (hasConsent()) {
+                initializePostHog();
+            } else {
+                showConsentBanner();
+            }
+
+            // Set up consent banner button event listeners
+            document.getElementById('acceptConsent').addEventListener('click', function () {
+                setConsent(true);
+            });
+
+            document.getElementById('rejectConsent').addEventListener('click', function () {
+                setConsent(false);
+            });
+
+            // Set up privacy modal event listeners
+            document.getElementById('privacySettingsLink').addEventListener('click', function (e) {
+                e.preventDefault();
+                showPrivacyModal();
+            });
+
+            document.getElementById('closePrivacyModal').addEventListener('click', function () {
+                hidePrivacyModal();
+            });
+
+            document.getElementById('toggleConsentBtn').addEventListener('click', function () {
+                toggleConsent();
+            });
+
+            // Close modal when clicking outside
+            document.getElementById('privacyModal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    hidePrivacyModal();
+                }
+            });
+        });
     </script>
 </head>
 
@@ -26,9 +145,63 @@
     </main>
     {% block footer %}
     <div class="flex w-full h-20 justify-center items-center">
-        &copy; 2024 by&nbsp;<a href="https://erik-engelhardt.com/">Erik Engelhardt</a>.
+        &copy; 2024 by&nbsp;<a href="https://erik-engelhardt.com/">Erik Engelhardt</a>&nbsp;|&nbsp;<a
+            href="/privacy">Privacy Policy</a>&nbsp;|&nbsp;<a href="#" id="privacySettingsLink">Privacy Settings</a>
     </div>
     {% endblock footer %}
+    <!-- GDPR Consent Banner -->
+    <div id="consentBanner" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 shadow-lg z-50 hidden">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex-1 text-sm">
+                <p>This website uses analytics cookies to understand how you interact with our site. Your data helps us
+                    improve our content and user experience.
+                    <a href="/privacy" class="underline hover:text-gray-300">Learn more in our Privacy Policy</a>.
+                </p>
+            </div>
+            <div class="flex gap-3">
+                <button id="rejectConsent" class="consent-btn-reject">
+                    Reject
+                </button>
+                <button id="acceptConsent" class="consent-btn-accept">
+                    Accept
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Settings Modal -->
+    <div id="privacyModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-gray-700 bg-opacity-80 transition-opacity duration-300">
+        <div class="bg-gray-800 rounded-lg p-6 max-w-md mx-4 border border-gray-600">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">Privacy Settings</h3>
+                <button id="closePrivacyModal" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <p class="text-sm mb-3">Analytics tracking helps us understand how visitors use our site to improve
+                        content and user experience.</p>
+
+                    <div class="flex items-center justify-between p-3 bg-gray-700 rounded border border-gray-600">
+                        <div>
+                            <span class="font-medium">Analytics Tracking</span>
+                            <div class="text-sm text-gray-300" id="consentStatusText">Checking...</div>
+                        </div>
+                        <button id="toggleConsentBtn" class="privacy-toggle-btn">
+                            <span id="toggleBtnText">Toggle</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-xs text-gray-400">
+                    <p>Changes take effect immediately. For more information, see our <a href="/privacy"
+                            class="underline">Privacy Policy</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Image Modal -->
     <div id="imageModal"
         class="fixed inset-0 z-50 hidden items-center justify-center bg-gray-700 transition-opacity duration-300">

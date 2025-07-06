@@ -30,6 +30,7 @@ pub fn start_blog(listener: TcpListener) -> Result<Server, std::io::Error> {
             .service(handlers::blog)
             .service(handlers::publications)
             .service(handlers::post)
+            .service(handlers::privacy)
     })
     .listen(listener)?
     .run();
