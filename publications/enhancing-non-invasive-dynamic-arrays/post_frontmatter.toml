@@ -1,0 +1,25 @@
+title = "Enhancing Non-Invasive Electroanatomical Mapping with Dynamic Sensor Arrays"
+authors = ["Erik Engelhardt", "Johannes Hoffmann", "Moritz Boueke", "Norbert Frey", "Gerhard Schmidt"]
+abstract = """
+We introduce a novel approach to non-invasive electroanatomical mapping using dynamic sensor arrays that reposition between heartbeats to enhance spatial resolution without increasing sensor count. Our simulated dynamic array with six motion steps per axis significantly improved performance metrics, achieving Dice scores of 0.95 (vs. 0.82 static), precision of 0.98 (vs. 0.95 static), and recall of 0.92 (vs. 0.73 static). This approach could substantially reduce cost and improve performance of non-invasive electroanatomical mapping..
+"""
+date = "2024-10-20"
+publication_type = "Conference Article"
+venue = "2024 IEEE SENSORS"
+doi = "10.1109/SENSORS60989.2024.10784742"
+url = "https://doi.org/10.1109/SENSORS60989.2024.10784742"
+bibtex = '''
+@inproceedings{Engelhardt2024Enhancing,
+  title={Enhancing Non-Invasive Electroanatomical Mapping with Dynamic Sensor Arrays},
+  author={Engelhardt, Erik and Hoffmann, Johannes and Boueke, Moritz and Frey, Norbert and Schmidt, Gerhard},
+  booktitle={2024 IEEE SENSORS},
+  pages={1--4},
+  year={2024},
+  organization={IEEE},
+  doi={10.1109/SENSORS60989.2024.10784742}
+}
+'''
+keywords = ["Non-invasive electroanatomical mapping", "Dynamic sensor arrays", "Magnetocardiography", "Cardiac diagnostics", "Biomedical engineering"]
+citation = "E. Engelhardt, J. Hoffmann, M. Boueke, N. Frey and G. Schmidt, \"Enhancing Non-Invasive Electroanatomical Mapping with Dynamic Sensor Arrays,\" 2024 IEEE SENSORS, Kobe, Japan, 2024, pp. 1-4, doi: 10.1109/SENSORS60989.2024.10784742."
+thumbnail = "/static/img/publications/enhancing-non-invasive-dynamic-arrays.png"
+language = "English"

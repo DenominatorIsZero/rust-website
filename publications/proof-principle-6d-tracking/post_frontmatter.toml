@@ -1,0 +1,25 @@
+title = "Proof of Principle: Full 6D Point-to-Point Motion Tracking with Magnetoelectric Sensors"
+authors = ["Johannes Hoffmann", "Moritz Boueke", "Erik Engelhardt", "Tobias Schmidt", "Clint Hansen", "Julius Welzel", "Walter Maetzler", "Gerhard Schmidt"]
+abstract = """
+We demonstrate full 6D motion tracking using an early-stage triaxial magnetoelectric sensor array, addressing limitations in applications with restricted mobility or non-line-of-sight conditions. By combining a real-time magnetic signal preprocessing pipeline with a revised position and orientation estimation algorithm, we achieved tracking at ranges up to 50 cm with average errors of 1.4 cm for distance, 6.4 cm for position, and 27° for orientation. This proof of principle showcases the potential of magnetoelectric sensors for robust motion tracking in challenging environments.
+"""
+date = "2024-10-20"
+publication_type = "Conference Article"
+venue = "2024 IEEE SENSORS"
+doi = "10.1109/SENSORS60989.2024.10785199"
+url = "https://doi.org/10.1109/SENSORS60989.2024.10785199"
+bibtex = '''
+@inproceedings{Hoffmann2024Proof,
+  title={Proof of Principle: Full 6D Point-to-Point Motion Tracking with Magnetoelectric Sensors},
+  author={Hoffmann, Johannes and Boueke, Moritz and Engelhardt, Erik and Schmidt, Tobias and Hansen, Clint and Welzel, Julius and Maetzler, Walter and Schmidt, Gerhard},
+  booktitle={2024 IEEE SENSORS},
+  pages={1--4},
+  year={2024},
+  organization={IEEE},
+  doi={10.1109/SENSORS60989.2024.10785199}
+}
+'''
+keywords = ["6D motion sensing", "biomedical applications", "dipole field", "inverse solution", "magnetic localization", "magnetic tracking", "magnetoelectric sensors", "real-time signal processing"]
+citation = "J. Hoffmann et al., \"Proof of Principle: Full 6D Point-to-Point Motion Tracking with Magnetoelectric Sensors,\" 2024 IEEE SENSORS, Kobe, Japan, 2024, pp. 1-4, doi: 10.1109/SENSORS60989.2024.10785199."
+thumbnail = "/static/img/publications/proof-principle-6d-tracking.png"
+language = "English"
