@@ -1,0 +1,26 @@
+title = "A Magnetoelectric Distance Estimation System for Relative Human Motion Tracking"
+authors = ["Johannes Hoffmann", "Henrik Wolframm", "Erik Engelhardt", "Moritz Boueke", "Tobias Schmidt", "Julius Welzel", "Michael Höft", "Walter Maetzler", "Gerhard Schmidt"]
+abstract = """
+We present a distributed magnetic tracking system based on novel magnetoelectric (ME) sensors for clinical motion analysis, addressing the need for accurate relative tracking of extremities in mobility assessment. The system employs body-worn magnetic actuators and ME sensor arrays with comprehensive signal processing and gradient descent-based calibration. In pilot studies evaluating motion tracking during treadmill walking, we achieved centimeter-level accuracy with a mean absolute distance error of 0.4 cm at distances up to 60 cm, demonstrating the potential for clinical gait parameter assessment.
+"""
+date = "2025-01-16"
+publication_type = "Journal Article"
+venue = "Sensors"
+doi = "10.3390/s25020495"
+url = "https://doi.org/10.3390/s25020495"
+bibtex = '''
+@article{Hoffmann2025,
+  title = {A Magnetoelectric Distance Estimation System for Relative Human Motion Tracking},
+  author = {Hoffmann, Johannes and Wolframm, Henrik and Engelhardt, Erik and Boueke, Moritz and Schmidt, Tobias and Welzel, Julius and Höft, Michael and Maetzler, Walter and Schmidt, Gerhard},
+  journal = {Sensors},
+  year = {2025},
+  volume = {25},
+  number = {2},
+  pages = {495},
+  doi = {10.3390/s25020495}
+}
+'''
+keywords = ["digital signal processing", "gait analysis", "magnetic motion tracking", "magnetoelectric sensor", "technical validation"]
+citation = "Hoffmann, J.; Wolframm, H.; Engelhardt, E.; Boueke, M.; Schmidt, T.; Welzel, J.; Höft, M.; Maetzler, W.; Schmidt, G. A Magnetoelectric Distance Estimation System for Relative Human Motion Tracking. Sensors 2025, 25, 495."
+thumbnail = "/static/img/publications/magnetoelectric-distance-estimation.jpg"
+language = "English"
