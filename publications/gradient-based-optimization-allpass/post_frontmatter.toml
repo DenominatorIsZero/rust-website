@@ -1,0 +1,23 @@
+title = "Gradient-based Optimization of All-pass Filter Networks for Non-invasive Electroanatomical Mapping"
+authors = ["Erik Engelhardt", "Johannes Hoffmann", "Moritz Boueke", "Lukas Elsner", "Marius Leye", "Norbert Frey", "Gerhard Schmidt"]
+abstract = """
+We propose interconnected all-pass filter networks as a novel approach for non-invasive electroanatomical mapping, addressing the fundamental challenge of accurately representing continuous propagation velocities in cardiac arrhythmia localization. Current methods either sacrifice precision with discrete delays or require computationally intensive biophysical models that limit clinical applicability. Our gradient-based optimization approach demonstrates potential for more precise and computationally efficient cardiac mapping without invasive procedures.
+"""
+date = "2025-07-11"
+publication_type = "Journal Article"
+venue = "IEEE Access"
+doi = "10.1109/ACCESS.2025.3588293"
+url = "https://doi.org/10.1109/ACCESS.2025.3588293"
+bibtex = '''
+@article{Engelhardt2025Gradient,
+  title={Gradient-based Optimization of All-pass Filter Networks for Non-invasive Electroanatomical Mapping},
+  author={Engelhardt, Erik and Hoffmann, Johannes and Boueke, Moritz and Elsner, Lukas and Leye, Marius and Frey, Norbert and Schmidt, Gerhard},
+  journal={IEEE Access},
+  year={2025},
+  doi={10.1109/ACCESS.2025.3588293}
+}
+'''
+keywords = ["All-pass Filter Networks", "Gradient Descent Optimization", "Cardiac Propagation Velocity", "Non-invasive Electroanatomical Mapping", "Magnetocardiography", "Computational Modeling"]
+citation = "E. Engelhardt et al., \"Gradient-based Optimization of All-pass Filter Networks for Non-invasive Electroanatomical Mapping,\" IEEE Access, 2025, doi: 10.1109/ACCESS.2025.3588293."
+thumbnail = "/static/img/publications/gradient-based-optimization-allpass.svg"
+language = "English"

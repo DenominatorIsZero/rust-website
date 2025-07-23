@@ -22,5 +22,5 @@ bibtex = '''
 '''
 keywords = ["digital signal processing", "gait analysis", "magnetic motion tracking", "magnetoelectric sensor", "technical validation"]
 citation = "Hoffmann, J.; Wolframm, H.; Engelhardt, E.; Boueke, M.; Schmidt, T.; Welzel, J.; Höft, M.; Maetzler, W.; Schmidt, G. A Magnetoelectric Distance Estimation System for Relative Human Motion Tracking. Sensors 2025, 25, 495."
-thumbnail = "/static/img/publications/magnetoelectric-distance-estimation.jpg"
+thumbnail = "/static/img/publications/magnetoelectric-distance-estimation.png"
 language = "English"

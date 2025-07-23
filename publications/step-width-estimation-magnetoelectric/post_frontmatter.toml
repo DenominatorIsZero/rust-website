@@ -1,0 +1,26 @@
+title = "Pilot Study: Step Width Estimation with Body-Worn Magnetoelectric Sensors"
+authors = ["Johannes Hoffmann", "Erik Engelhardt", "Moritz Boueke", "Julius Welzel", "Clint Hansen", "Walter Maetzler", "Gerhard Schmidt"]
+abstract = """
+We present a magnetic estimation approach using shank-worn magnetoelectric sensors to measure step width, a key clinical motor marker for gait stability assessment. By comparing estimates to optical motion capture references during treadmill walking with eight healthy participants, we achieved high accuracy with mean absolute error ≤1 cm for step width and <0.1 cm for step width variability. The method demonstrates strong potential for wearable gait stability assessment in real-world conditions where traditional laboratory systems are impractical.
+"""
+date = "2025-05-28"
+publication_type = "Journal Article"
+venue = "Sensors"
+doi = "10.3390/s25113390"
+url = "https://doi.org/10.3390/s25113390"
+bibtex = '''
+@article{Hoffmann2025PilotStudy,
+  title={Pilot Study: Step Width Estimation with Body-Worn Magnetoelectric Sensors},
+  author={Hoffmann, Johannes and Engelhardt, Erik and Boueke, Moritz and Welzel, Julius and Hansen, Clint and Maetzler, Walter and Schmidt, Gerhard},
+  journal={Sensors},
+  volume={25},
+  number={11},
+  pages={3390},
+  year={2025},
+  doi={10.3390/s25113390}
+}
+'''
+keywords = ["gait analysis", "gait variability", "magnetic motion tracking", "magnetoelectric sensor", "technical validation"]
+citation = "Hoffmann, J.; Engelhardt, E.; Boueke, M.; Welzel, J.; Hansen, C.; Maetzler, W.; Schmidt, G. Pilot Study: Step Width Estimation with Body-Worn Magnetoelectric Sensors. Sensors 2025, 25, 3390."
+thumbnail = "/static/img/publications/step-width-estimation-magnetoelectric.png"
+language = "English"
