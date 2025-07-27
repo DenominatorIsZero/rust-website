@@ -169,3 +169,39 @@ The consent system relies on browser localStorage:
 5. Test privacy settings modal for consent withdrawal
 
 This implementation provides a solid foundation for privacy-compliant analytics while maintaining a good user experience.
+
+## AI Demo Architecture
+
+The site is being extended with interactive AI demonstrations following a standardized architecture pattern.
+
+### Demo Project Structure
+Each AI demo is implemented as a separate repository with the following structure:
+```
+demo-project-name/
+├── Cargo.toml                 # Workspace root
+├── training/                  # Native training binary
+├── interactive/               # Bevy WASM demo binary
+├── shared/                    # Common model definitions
+└── models/                    # Generated .safetensors files
+```
+
+### Technology Stack for Demos
+- **Framework**: Bevy compiled to WASM for all interactive components
+- **AI Inference**: Candle framework for consistent model operations
+- **Model Format**: .safetensors for security and consistency
+- **Build**: wasm-pack for WASM compilation
+
+### Integration with Main Site
+- WASM files served from `static/wasm/project-name/`
+- Model files served from `static/models/project-name/`
+- Demos accessible at `/demos/project-name` URLs
+- Iframe embedding for flexible blog integration
+- Consistent loading patterns and error handling
+
+### Development Workflow for Demos
+1. Train models with `cargo run --bin training` in demo repository
+2. Build WASM with `wasm-pack build interactive --target web`
+3. Copy generated assets to main site's static directories
+4. Deploy through existing Docker pipeline
+
+This standardized approach ensures consistent development patterns, code reuse opportunities, and simplified maintenance across multiple AI demonstration projects.
