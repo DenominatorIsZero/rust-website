@@ -1,7 +1,7 @@
 use actix_web::{get, web, HttpResponse, Responder};
 use ignore::WalkBuilder;
 use serde::{Deserialize, Serialize};
-use std::{fs, io::Error, path::Path};
+use std::{fs, io::Error, path::Path, str::FromStr};
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Demo {
@@ -27,6 +27,28 @@ pub struct DemoContext {
     pub wasm_exists: bool,
     pub thumbnail_exists: bool,
     pub name: String,
+}
+
+impl DemoContext {
+    fn new(demo_name: &str) -> Result<Self, Error> {
+        let frontmatter = match extract_frontmatter(&demo_name) {
+            Ok(s) => s,
+            Err(e) => {
+                println!("{:?}", e);
+                return Err(e);
+            }
+        };
+
+        let wasm_exists = check_file_exists(&frontmatter.wasm_path);
+        let thumbnail_exists = check_file_exists(&frontmatter.thumbnail);
+
+        Ok(DemoContext {
+            demo: frontmatter,
+            wasm_exists,
+            thumbnail_exists,
+            name: String::from_str(demo_name).unwrap(),
+        })
+    }
 }
 
 fn extract_frontmatter(demo_name: &str) -> Result<Demo, Error> {
@@ -66,7 +88,7 @@ fn check_file_exists(file_path: &str) -> bool {
 pub async fn demo(tmpl: web::Data<tera::Tera>, demo_name: web::Path<String>) -> impl Responder {
     let mut context = tera::Context::new();
 
-    let frontmatter = match extract_frontmatter(&demo_name) {
+    let demo_context = match DemoContext::new(&demo_name) {
         Ok(s) => s,
         Err(e) => {
             println!("{:?}", e);
@@ -74,16 +96,6 @@ pub async fn demo(tmpl: web::Data<tera::Tera>, demo_name: web::Path<String>) -> 
                 .content_type("text/html")
                 .body("<p>Could not find demo - sorry!</p>");
         }
-    };
-
-    let wasm_exists = check_file_exists(&frontmatter.wasm_path);
-    let thumbnail_exists = check_file_exists(&frontmatter.thumbnail);
-
-    let demo_context = DemoContext {
-        demo: frontmatter,
-        wasm_exists,
-        thumbnail_exists,
-        name: demo_name.into_inner(),
     };
 
     context.insert("demo_context", &demo_context);
