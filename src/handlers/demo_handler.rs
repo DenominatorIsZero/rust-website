@@ -1,5 +1,4 @@
 use actix_web::{get, web, HttpResponse, Responder};
-use ignore::WalkBuilder;
 use serde::{Deserialize, Serialize};
 use std::{fs, io::Error, path::Path, str::FromStr};
 
@@ -112,57 +111,34 @@ pub async fn demo(tmpl: web::Data<tera::Tera>, demo_name: web::Path<String>) -> 
 }
 
 fn find_all_demos() -> Result<Vec<DemoContext>, std::io::Error> {
-    let mut t = ignore::types::TypesBuilder::new();
-    t.add_defaults();
-    let toml = match t.select("toml").build() {
-        Ok(t) => t,
-        Err(e) => {
-            println!("{:}", e);
-            return Err(Error::new(
-                std::io::ErrorKind::Other,
-                "could not build toml file type matcher",
-            ));
-        }
-    };
+    let demos_dir = Path::new("./demos");
+    let mut demo_contexts = Vec::new();
 
-    let file_walker = WalkBuilder::new("./demos").types(toml).build();
-    let mut frontmatters = Vec::new();
-    for frontmatter in file_walker {
-        match frontmatter {
-            Ok(fm) => {
-                if fm.path().is_file() {
-                    let fm_content = fs::read_to_string(fm.path())?;
-                    let demos: DemoContext = match toml::from_str(&fm_content) {
-                        Ok(f) => f,
-                        Err(e) => {
-                            println!(
-                                "could not parse frontmatter for {:}: {:}",
-                                fm.path().display(),
-                                e,
-                            );
-                            return Err(Error::new(
-                                std::io::ErrorKind::Other,
-                                "could not parse frontmatter",
-                            ));
-                        }
-                    };
+    // Read directory entries
+    for entry in fs::read_dir(demos_dir)? {
+        let entry = entry?;
+        let path = entry.path();
 
-                    frontmatters.push(demos);
+        // Only process directories
+        if path.is_dir() {
+            if let Some(dir_name) = path.file_name().and_then(|n| n.to_str()) {
+                // Try to create DemoContext for this directory
+                match DemoContext::new(dir_name) {
+                    Ok(demo_context) => {
+                        demo_contexts.push(demo_context);
+                    }
+                    Err(e) => {
+                        println!("Skipping directory '{}': {:?}", dir_name, e);
+                        // Continue processing other directories instead of failing completely
+                    }
                 }
-            }
-            Err(e) => {
-                println!("{:}", e); // we're just going to print the error for now
-                return Err(Error::new(
-                    std::io::ErrorKind::NotFound,
-                    "could not locate frontmatter",
-                ));
             }
         }
     }
 
-    frontmatters.sort_by(|a, b| b.date.cmp(&a.date));
+    demo_contexts.sort_by(|a, b| b.demo.date.cmp(&a.demo.date));
 
-    Ok(frontmatters)
+    Ok(demo_contexts)
 }
 
 #[get("/demos")]

@@ -39,8 +39,8 @@
                      class="w-full h-auto cursor-pointer"
                      onclick="openModal(this)">
                 {% else %}
-                <div class="w-full h-32 flex items-center justify-center border-2 border-gray-500">
-                    <span class="text-sm">No thumbnail available</span>
+                <div class="demo-thumbnail-placeholder h-32">
+                    <span class="text-sm text-gray-400">No thumbnail available</span>
                 </div>
                 {% endif %}
             </div>
@@ -55,7 +55,7 @@
             <h2>Demo in Planning</h2>
             <p>This demo is currently being planned and developed.</p>
             <a href="{{ demo_context.demo.repository }}" target="_blank" rel="noopener noreferrer" 
-               class="inline-block mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400 transition-colors">
+               class="btn inline-block mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400 transition-colors">
                 View Repository
             </a>
         </div>

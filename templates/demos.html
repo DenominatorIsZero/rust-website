@@ -1,0 +1,59 @@
+{% extends "centerpage.html" %}
+
+{% block centerpage %}
+{% if demos %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for demo in demos %}
+    <a href="/demos/{{ demo.name }}" class="demo-card demo-card-hover block">
+        <!-- Thumbnail -->
+        <div class="w-full h-48 bg-gray-600 rounded mb-4 overflow-hidden flex items-center justify-center">
+            {% if demo.thumbnail_exists %}
+            <img src="{{ demo.demo.thumbnail }}" alt="Thumbnail for {{ demo.demo.title }}"
+                class="w-full h-full object-cover">
+            {% else %}
+            <div class="demo-thumbnail-placeholder">
+                <span class="text-sm text-gray-400">No thumbnail available</span>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Content -->
+        <div class="space-y-3">
+            <!-- Title -->
+            <h2 class="text-lg font-bold text-white hover:text-green-400 transition-colors line-clamp-2">
+                {{ demo.demo.title }}
+            </h2>
+
+            <!-- Status, Date, Type -->
+            <div class="flex flex-wrap items-center gap-2 text-sm">
+                <span class="demo-status-badge 
+                    {% if demo.demo.status == 'finished' %}demo-status-finished
+                    {% elif demo.demo.status == 'in-progress' %}demo-status-in-progress
+                    {% else %}demo-status-planned{% endif %}">
+                    {{ demo.demo.status | title }}
+                </span>
+                <span class="text-gray-300">{{ demo.demo.date }}</span>
+                <span class="text-gray-300">•</span>
+                <span class="text-gray-300">{{ demo.demo.demo_type }}</span>
+            </div>
+
+            <!-- Tech Stack -->
+            {% if demo.demo.tech_stack %}
+            <div class="flex flex-wrap gap-2">
+                {% for tech in demo.demo.tech_stack %}
+                <span class="demo-tech-tag">{{ tech }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-12">
+    <p class="text-gray-400 text-lg">No demos available yet.</p>
+    <p class="text-gray-500 text-sm mt-2">Check back soon for interactive AI demonstrations!</p>
+</div>
+{% endif %}
+
+{% endblock centerpage %}
