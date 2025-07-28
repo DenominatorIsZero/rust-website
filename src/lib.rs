@@ -29,6 +29,7 @@ pub fn start_blog(listener: TcpListener) -> Result<Server, std::io::Error> {
             .service(handlers::index)
             .service(handlers::blog)
             .service(handlers::publications)
+            .service(handlers::demos)
             .service(handlers::post)
             .service(handlers::demo)
             .service(handlers::privacy)
