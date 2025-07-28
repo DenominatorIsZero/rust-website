@@ -1,6 +1,6 @@
 use actix_web::{get, web, HttpResponse, Responder};
 use ignore::WalkBuilder;
-use std::{cmp::Ordering, fs, io::Error};
+use std::{fs, io::Error};
 
 use serde::{Deserialize, Serialize};
 
