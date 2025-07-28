@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}{{ demo_context.demo.title }} | AI Demo {% endblock title %}
+
+{% block header %}
+<div class="relative mt-2 ml-4 flex w-full justify-center">
+    <a class="absolute left-0 underline" href="/demos">← Back to Demos</a>
+    <p class="hidden md:inline text-lg">{{ demo_context.demo.title }}</p>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="border-4 border-gray-100 p-6">
+    <!-- Demo Header -->
+    <div class="mb-6">
+        <h1>{{ demo_context.demo.title }}</h1>
+        <div class="flex items-center gap-4 mb-4">
+            <span class="demo-status-badge
+                {% if demo_context.demo.status == 'finished' %}demo-status-finished{% endif %}
+                {% if demo_context.demo.status == 'in_progress' %}demo-status-in-progress{% endif %}
+                {% if demo_context.demo.status == 'planned' %}demo-status-planned{% endif %}">
+                {{ demo_context.demo.status | title }}
+            </span>
+            <span class="demo-status-badge demo-status-planned">{{ demo_context.demo.demo_type }}</span>
+            {% if demo_context.demo.status == 'finished' %}
+            <span class="demo-status-badge demo-status-planned">{{ demo_context.demo.date }}</span>
+            {% endif %}
+        </div>
+        
+        <!-- Description and Thumbnail -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <div class="md:col-span-2">
+                <p>{{ demo_context.demo.description }}</p>
+            </div>
+            <div class="demo-card">
+                {% if demo_context.thumbnail_exists %}
+                <img src="{{ demo_context.demo.thumbnail }}" 
+                     alt="{{ demo_context.demo.title }} thumbnail"
+                     class="w-full h-auto cursor-pointer"
+                     onclick="openModal(this)">
+                {% else %}
+                <div class="w-full h-32 flex items-center justify-center border-2 border-gray-500">
+                    <span class="text-sm">No thumbnail available</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Area (Full Width) -->
+    <div class="mb-6">
+        {% if demo_context.demo.status == 'planned' %}
+        <div class="demo-placeholder">
+            <div class="text-6xl mb-4">🚧</div>
+            <h2>Demo in Planning</h2>
+            <p>This demo is currently being planned and developed.</p>
+            <a href="{{ demo_context.demo.repository }}" target="_blank" rel="noopener noreferrer" 
+               class="inline-block mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-400 transition-colors">
+                View Repository
+            </a>
+        </div>
+        {% elif demo_context.demo.status == 'in_progress' or demo_context.demo.status == 'finished' %}
+            {% if demo_context.wasm_exists %}
+            <div class="demo-iframe-container">
+                <iframe src="{{ demo_context.demo.wasm_path }}" 
+                        class="w-full h-96 border-0"
+                        title="{{ demo_context.demo.title }} Demo">
+                </iframe>
+            </div>
+            {% else %}
+            <div class="demo-placeholder">
+                <div class="text-6xl mb-4">⚠️</div>
+                <h2>Demo Assets Loading</h2>
+                <p>Demo files are being prepared. Check back soon!</p>
+                <p class="text-sm mt-2">Expected path: {{ demo_context.demo.wasm_path }}</p>
+            </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <!-- Instructions (Full Width) -->
+    {% if demo_context.demo.instructions %}
+    <div class="demo-card mb-6">
+        <h2>How to Use</h2>
+        <p>{{ demo_context.demo.instructions }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Info Cards (2x2 Grid) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Technical Details -->
+        <div class="demo-card">
+            <h2>Technical Details</h2>
+            <div class="space-y-2 text-sm mt-2">
+                <div>
+                    <strong>Model Size:</strong> {{ demo_context.demo.model_size }}
+                </div>
+                <div>
+                    <strong>Requirements:</strong> {{ demo_context.demo.browser_requirements }}
+                </div>
+                <div>
+                    <strong>Performance:</strong> {{ demo_context.demo.performance_notes }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="demo-card">
+            <h2>Technology Stack</h2>
+            <div class="flex flex-wrap gap-2 mt-2">
+                {% for tech in demo_context.demo.tech_stack %}
+                <span class="demo-tech-tag">{{ tech }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Keywords -->
+        {% if demo_context.demo.keywords %}
+        <div class="demo-card">
+            <h2>Keywords</h2>
+            <div class="flex flex-wrap gap-2 mt-2">
+                {% for keyword in demo_context.demo.keywords %}
+                <span class="demo-keyword-tag">{{ keyword }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="demo-card">
+            <h2>Source Code</h2>
+            <a href="{{ demo_context.demo.repository }}" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                </svg>
+                View on GitHub
+            </a>
+        </div>
+        {% endif %}
+
+        <!-- Source Code (always visible) -->
+        {% if demo_context.demo.keywords %}
+        <div class="demo-card">
+            <h2>Source Code</h2>
+            <a href="{{ demo_context.demo.repository }}" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                </svg>
+                View on GitHub
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

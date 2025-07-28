@@ -1,0 +1,2 @@
+# This directory stores WASM files for AI demos
+# Files will be copied here from individual demo repositories during deployment

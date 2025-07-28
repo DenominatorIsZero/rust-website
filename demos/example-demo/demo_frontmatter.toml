@@ -1,0 +1,18 @@
+# EXAMPLE DEMO - NOT A REAL IMPLEMENTATION
+# This is a template/example file to demonstrate the demo frontmatter structure
+# Replace with actual demo content when implementing real projects
+
+title = "Example Project Demo"
+description = "This is an example demo entry to showcase the TOML frontmatter structure for AI demonstrations"
+instructions = "This is just an example - no actual demo functionality is implemented yet"
+status = "planned"
+date = "2025-01-27"  # Example date - update when demo is finished
+wasm_path = "/static/wasm/example-demo/example_demo.js"  # Placeholder path
+repository = "https://github.com/DenominatorIsZero/example_project"
+thumbnail = "/static/img/demos/example-demo.png"  # Placeholder thumbnail
+demo_type = "Example"
+tech_stack = ["Bevy", "Candle", "WASM"]
+keywords = ["example", "template", "demo-structure"]
+model_size = "~1MB"  # Example size
+browser_requirements = "WebAssembly support, 50MB RAM"
+performance_notes = "Example performance description"
