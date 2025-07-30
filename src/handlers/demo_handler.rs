@@ -30,7 +30,7 @@ pub struct DemoContext {
 
 impl DemoContext {
     fn new(demo_name: &str) -> Result<Self, Error> {
-        let frontmatter = match extract_frontmatter(&demo_name) {
+        let frontmatter = match extract_frontmatter(demo_name) {
             Ok(s) => s,
             Err(e) => {
                 println!("{:?}", e);
