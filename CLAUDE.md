@@ -1,10 +1,12 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with this website repository.
 
 ## Project Overview
 
 This is a personal website/blog built with Rust using the Actix-web framework. The site serves academic publications and blog posts with content sourced from TOML frontmatter files and Markdown content. The site includes GDPR-compliant analytics tracking using PostHog with a comprehensive consent management system.
+
+**Repository**: Personal website with AI demo integration capabilities
 
 ## Development Commands
 
@@ -205,3 +207,221 @@ demo-project-name/
 4. Deploy through existing Docker pipeline
 
 This standardized approach ensures consistent development patterns, code reuse opportunities, and simplified maintenance across multiple AI demonstration projects.
+
+## Development Guidelines
+
+### Code Organization
+
+- **Handlers**: Organize by functionality in `src/handlers/` (home, blog, post, publications, privacy)
+- **Templates**: HTML templates in `templates/` using Tera templating engine
+- **Static Assets**: CSS in `tailwind/base.css`, compiled to `static/css/index.css`
+- **Content Management**: Posts in `posts/`, publications in `publications/` with TOML frontmatter
+- **Configuration**: Main application setup in `src/lib.rs`, server entry in `src/main.rs`
+
+### Website Development Patterns
+
+- **Content Discovery**: Use file-walking approach for posts and publications
+- **Template Structure**: Follow existing base.html → specific template inheritance
+- **CSS Development**: Work in `tailwind/base.css`, compile with `npm run build-css-prod`
+- **Privacy Compliance**: Maintain GDPR compliance for any user-facing features
+- **Analytics Integration**: Follow existing PostHog consent management patterns
+
+### Quality Standards
+
+- Follow existing code style and architectural patterns
+- Ensure mobile responsiveness for all UI changes
+- Test Docker builds regularly for deployment readiness
+- Maintain privacy compliance and GDPR requirements
+- Verify PostHog analytics integration works correctly
+
+## AI-Assisted Development Workflow
+
+This project follows a systematic AI-assisted development workflow designed for efficient collaboration with Claude Code. The workflow ensures well-documented, systematic feature development from initial concept to final implementation.
+
+### Documentation Structure
+
+The `docs/` folder supports the AI-assisted development process:
+
+- **`docs/projects/`** - Project-based documentation organization
+  - **`archive/`** - Completed projects with their specifications and implementation plans
+  - **`template/`** - Reusable specification and plan templates for new website features
+    - `spec-template.md` - Website feature specification template
+    - `plan-template.md` - Phase-based implementation plan template
+    - `README.md` - Template usage guidelines for website development
+
+### Three-Phase Development Process
+
+#### Phase 1: Specification
+Work with Claude Code to develop comprehensive feature specifications:
+
+1. **Problem Definition** - Clearly articulate what needs to be built and why
+2. **Requirements Gathering** - Define functional and non-functional requirements
+3. **Success Criteria** - Establish measurable outcomes and acceptance criteria
+4. **Technical Constraints** - Document limitations, dependencies, and architectural considerations
+5. **Website Integration** - Define integration points with existing website systems
+
+The specification phase is complete when:
+- All stakeholders would understand what's being built
+- Technical approach is well-defined and fits existing architecture
+- Edge cases and error scenarios are covered
+- Success criteria are measurable and testable
+- Privacy/GDPR implications are considered
+
+#### Phase 2: Planning
+Transform specifications into actionable implementation plans:
+
+1. **Task Breakdown** - Decompose features into discrete, atomic todos
+2. **Dependency Mapping** - Identify task dependencies and optimal sequencing
+3. **Website Integration Strategy** - Plan integration with templates, handlers, and static assets
+4. **Commit Strategy** - Plan natural checkpoints for incremental commits
+5. **Quality Gates** - Define testing and validation at each checkpoint
+
+Plans should contain:
+- Numbered, sequential tasks that can be completed independently
+- Clear definition of "done" for each task including website-specific validation
+- Commit points that represent stable, testable states
+- Docker build and deployment considerations
+
+#### Phase 3: Execution
+Implement plans step-by-step with Claude Code assistance:
+
+1. **Task-by-Task Implementation** - Work through planned todos systematically
+2. **Frequent Commits** - Commit at natural checkpoints for incremental progress
+3. **Continuous Validation** - Test changes with `cargo run` and verify Docker builds
+4. **Documentation Updates** - Keep documentation in sync with implementation
+5. **Plan Adaptation** - Adjust plans based on discoveries during implementation
+
+### AI Integration Guidelines
+
+#### Effective Collaboration with Claude Code
+
+- **Context Management** - Reference specifications and plans to maintain context across sessions
+- **Incremental Development** - Work on one discrete task at a time
+- **Code Review Partnership** - Use Claude Code to review implementations before committing
+- **Problem-Solving** - Leverage Claude Code's analysis for debugging and optimization
+- **Website Patterns** - Follow existing website architecture and coding conventions
+
+#### Best Practices for AI-Assisted Website Development
+
+- **Clear Communication** - Provide specific, actionable requests
+- **Iterative Refinement** - Use multiple rounds of feedback to improve specifications and implementations
+- **Documentation First** - Always document decisions and rationale for future reference
+- **Validation Focus** - Ask Claude Code to help validate implementations against specifications
+- **Privacy Awareness** - Ensure GDPR compliance considerations are addressed
+- **Mobile Testing** - Verify responsive design for all UI changes
+
+#### CLAUDE.md Maintenance
+
+**IMPORTANT**: Keep this file current to improve future AI interactions.
+
+**When to update CLAUDE.md:**
+- After major architectural changes or refactoring
+- When new development patterns or workflows are established
+- After discovering common issues and their solutions
+- When user has to correct AI assumptions or provide missing context
+- After adding new tools, dependencies, or build processes
+- After significant website feature additions or privacy compliance updates
+
+**Proactive Update Protocol:**
+- Claude Code should offer to update CLAUDE.md after significant changes
+- Focus on generic guidance that benefits future interactions
+- Document new patterns, workflows, or common corrections
+- Update file paths, command references, or architectural descriptions
+- Add lessons learned from debugging or problem-solving sessions
+
+Example trigger situations:
+- "You should use X instead of Y" → Add to development guidelines
+- "The files are actually located in Z" → Update repository structure
+- "This command doesn't work, use this instead" → Update development commands
+- Major refactoring or new features → Update relevant sections
+
+### Commit Strategy
+
+#### Commit as Natural Checkpoints
+
+Commits should represent meaningful progress points, not arbitrary code changes:
+
+- **Feature Milestones** - Complete implementation of planned tasks
+- **Stable States** - Code compiles, tests pass, and functionality works
+- **Logical Units** - Related changes grouped together (e.g., handler + template + CSS)
+- **Rollback Points** - States you could confidently return to if needed
+
+#### Commit Review Requirement
+
+**IMPORTANT**: Always ask the user to review changes before committing. Present a summary of what will be committed and wait for approval before executing any git commit commands.
+
+#### Commit Message Conventions
+
+Follow this format for AI workflow commits:
+
+```
+[PHASE] Brief description of change
+
+- Specific changes made
+- Reference to docs/projects/ files
+- Any deviations from original plan
+
+Closes: #issue-number (if applicable)
+Refs: docs/projects/feature-name/specs/feature-name.md, docs/projects/feature-name/plan.md
+```
+
+Examples:
+```
+[SPEC] Define contact form requirements
+
+- Added comprehensive contact form spec with validation
+- Defined email integration and spam protection
+- Identified integration points with existing privacy system
+
+Refs: docs/projects/contact-form/specs/contact-form.md
+```
+
+```
+[PLAN] Break down contact form implementation
+
+- Created 8 discrete tasks for form implementation
+- Identified dependencies on existing template system
+- Planned email handler and validation logic
+
+Refs: docs/projects/contact-form/plan.md
+```
+
+```
+[IMPL] Add contact form handler and template
+
+- Implemented /contact route with form processing
+- Added contact form template with validation
+- Integrated with existing privacy and analytics systems
+- Added comprehensive error handling and user feedback
+
+Refs: docs/projects/contact-form/specs/contact-form.md, docs/projects/contact-form/plan.md
+```
+
+```
+[DOCS] Update architecture documentation for contact system
+
+- Added contact form flow diagrams and validation details
+- Updated handler documentation with new endpoints
+- Documented email integration and spam protection
+- Added troubleshooting section for common form issues
+
+Refs: CLAUDE.md
+```
+
+```
+[MAINT] Update dependencies and fix clippy warnings
+
+- Updated Actix-web to latest version for security improvements
+- Fixed deprecated function calls in handlers
+- Enhanced CSS build process for better performance
+- Updated Docker configuration for optimized builds
+
+Refs: Cargo.toml, tailwind/package.json, Dockerfile
+```
+
+#### Branching Strategy
+
+- **Feature Branches** - One branch per specification for organized development (e.g., `feature/contact-form`)
+- **Direct Merges** - Merge to main after local validation and testing (solo project workflow)
+- **Clean History** - Use meaningful commit messages with phase tags for clear development history
+- **Rollback Safety** - Each commit represents a stable checkpoint you can confidently return to
