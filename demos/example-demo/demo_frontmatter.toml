@@ -1,18 +1,18 @@
-# EXAMPLE DEMO - NOT A REAL IMPLEMENTATION
-# This is a template/example file to demonstrate the demo frontmatter structure
-# Replace with actual demo content when implementing real projects
+# AI Demo Template
+# A complete, reusable template for creating AI demonstration projects in Rust
+# Trained on synthetic data with target function: (input1 + input2).tanh() * 0.5 + 0.5
 
-title = "Example Project Demo"
-description = "This is an example demo entry to showcase the TOML frontmatter structure for AI demonstrations"
-instructions = "This is just an example - no actual demo functionality is implemented yet"
-status = "planned"
-date = "2025-01-27"  # Example date - update when demo is finished
-wasm_path = "/static/wasm/example-demo/example_demo.js"  # Placeholder path
+title = "AI Demo Template"
+description = "A comprehensive template for building AI demonstrations with model training, interactive UI, and web deployment. Features a neural network trained on 1,000 examples over 10,000 epochs, achieving 97.54% loss reduction (final loss: 0.000460)."
+instructions = "Enter two numbers between -1 and 1 in the input fields and click 'Predict' to see the trained model's output. The model learns the function (input1 + input2).tanh() * 0.5 + 0.5, mapping the sum to [0,1] range."
+status = "finished"
+date = "2024-08-30"
+wasm_path = "/static/wasm/example-project/index.html"
 repository = "https://github.com/DenominatorIsZero/example_project"
-thumbnail = "/static/img/demos/example-demo.png"  # Placeholder thumbnail
-demo_type = "Example"
-tech_stack = ["Bevy", "Candle", "WASM"]
-keywords = ["example", "template", "demo-structure"]
-model_size = "~1MB"  # Example size
-browser_requirements = "WebAssembly support, 50MB RAM"
-performance_notes = "Example performance description"
+thumbnail = "/static/img/demos/example_project.png"
+demo_type = "Machine Learning"
+tech_stack = ["Bevy", "Candle", "WASM", "Rust"]
+keywords = ["ai", "machine-learning", "template", "neural-network", "bevy", "candle", "wasm", "training"]
+model_size = "~379 bytes (332 bytes weights + 47 bytes metadata)"
+browser_requirements = "WebAssembly support, modern browser, 100MB RAM"
+performance_notes = "Loads instantly with embedded model assets, responsive UI, optimized WASM build. Model trained in 13.3s with 97.54% loss reduction."
