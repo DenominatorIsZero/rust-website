@@ -281,6 +281,7 @@ Plans should contain:
 - Clear definition of "done" for each task including website-specific validation
 - Commit points that represent stable, testable states
 - Docker build and deployment considerations
+- Use `[ ]` checkboxes for trackable tasks, `[x]` for completed tasks
 
 #### Phase 3: Execution
 Implement plans step-by-step with Claude Code assistance:
