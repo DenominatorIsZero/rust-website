@@ -1,5 +1,5 @@
-# Use an official Rust image to build the app
-FROM rust:latest as builder
+# Use specific slim Rust version for reproducible builds and minimal vulnerabilities
+FROM rust:1.89-slim AS builder
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
@@ -10,19 +10,21 @@ COPY . .
 # Build the application in release mode
 RUN cargo build --release
 
-# Use Ubuntu 22.04 as a base image for running the app (with glibc 2.32 or higher)
-FROM ubuntu:22.04
+# Use distroless nonroot image for minimal attack surface and non-root execution
+FROM gcr.io/distroless/cc-debian12:nonroot
 
-# Install any necessary runtime dependencies (e.g., OpenSSL if required)
-RUN apt-get update && apt-get install -y libssl-dev
+# Set working directory for the application
+WORKDIR /app
 
 # Copy the compiled binary from the builder stage
 COPY --from=builder /usr/src/app/target/release/personal-website /usr/local/bin/personal-website
-COPY ./posts /posts
-COPY ./demos /demos
-COPY ./publications /publications
-COPY ./static /static
-COPY ./templates /templates
+
+# Copy application files with proper permissions for non-root user
+COPY --chown=nonroot:nonroot ./posts ./posts
+COPY --chown=nonroot:nonroot ./demos ./demos
+COPY --chown=nonroot:nonroot ./publications ./publications
+COPY --chown=nonroot:nonroot ./static ./static
+COPY --chown=nonroot:nonroot ./templates ./templates
 
 # Expose the port your Actix Web app will run on
 EXPOSE 8080
