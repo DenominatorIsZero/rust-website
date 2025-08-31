@@ -10,36 +10,65 @@ This is a personal website/blog built with Rust using the Actix-web framework. T
 
 ## Development Commands
 
-### Running the Application
+This project uses [just](https://github.com/casey/just) for command management. Run `just` to see all available commands.
+
+### Setup and Development
 ```bash
-# Run locally with auto-reload
-cargo watch -x run
+# Install required development tools
+just setup
+
+# Start development server with hot reload
+just dev
 
 # Run normally
-cargo run
+just run
 ```
 
 The application serves on `127.0.0.1:8080` by default.
 
-### CSS/Styling Development
+### CSS Development
 ```bash
-# Watch for Tailwind CSS changes (run from tailwind/ directory)
-cd tailwind
-npm run watch-css
+# Watch and rebuild CSS during development
+just css-watch
 
 # Build CSS for production
-npm run build-css-prod
+just css-build
 ```
 
-### Docker Commands
+### Build and Deploy
 ```bash
-# Build and run locally
-docker build -t actix-web-app .
-docker run -p 8080:8080 actix-web-app
+# Build for development
+just build
 
-# Build for NAS deployment (linux/amd64)
-docker buildx build --platform linux/amd64 -t actix-web-app --output type=docker .
-docker save -o actix-web-app.tar actix-web-app
+# Build for production
+just build-release
+
+# Build Docker image locally
+just docker-build
+
+# Build and package for deployment
+just docker-deploy
+
+# Prepare for deployment (CSS + release build)
+just publish
+```
+
+### Code Quality
+```bash
+# Format code
+just fmt
+
+# Run linting
+just lint
+
+# Run tests (when implemented)
+just test
+
+# Run all quality checks
+just check
+
+# Clean build artifacts
+just clean
 ```
 
 ## Architecture Overview

@@ -61,17 +61,18 @@ This is a personal learning project where I experiment with new technologies. I'
 
 ### Development
 
+This project uses [just](https://github.com/casey/just) for command management:
+
 ```bash
 # Clone the repository
 git clone https://github.com/DenominatorIsZero/rust-website.git
 cd rust-website
 
-# Install dependencies and build CSS
-cd tailwind && npm install && npm run build-css-prod && cd ..
+# Install development tools and dependencies
+just setup
 
-# Run with hot reload
-cargo install cargo-watch
-cargo watch -x run
+# Start development server with hot reload
+just dev
 
 # Visit http://127.0.0.1:8080
 ```
@@ -79,21 +80,19 @@ cargo watch -x run
 ### CSS Development
 
 ```bash
-cd tailwind
-npm run watch-css  # For development
-npm run build-css-prod  # For production
+just css-watch     # Watch and rebuild CSS
+just css-build     # Build production CSS
 ```
 
 ### Docker Deployment
 
 ```bash
 # Build and run locally
-docker build -t rust-website .
+just docker-build
 docker run -p 8080:8080 rust-website
 
-# Build for production deployment
-docker buildx build --platform linux/amd64 -t rust-website --output type=docker .
-docker save -o rust-website.tar rust-website
+# Build and package for deployment
+just docker-deploy
 ```
 
 ## Project Structure
