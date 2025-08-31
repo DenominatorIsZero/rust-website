@@ -1,6 +1,6 @@
 use actix_web::{get, web, HttpResponse, Responder};
 use ignore::WalkBuilder;
-use std::{fs, io::Error};
+use std::fs;
 
 use serde::{Deserialize, Serialize};
 
@@ -22,16 +22,15 @@ struct Publication {
     language: Option<String>,
 }
 
-fn find_all_publications() -> Result<Vec<Publication>, std::io::Error> {
+fn find_all_publications() -> anyhow::Result<Vec<Publication>> {
     let mut t = ignore::types::TypesBuilder::new();
     t.add_defaults();
     let toml = match t.select("toml").build() {
         Ok(t) => t,
         Err(e) => {
-            println!("{:}", e);
-            return Err(Error::new(
-                std::io::ErrorKind::Other,
-                "could not build toml file type matcher",
+            println!("{e:}");
+            return Err(anyhow::anyhow!(
+                "could not build toml file type matcher: {e}"
             ));
         }
     };
@@ -47,14 +46,10 @@ fn find_all_publications() -> Result<Vec<Publication>, std::io::Error> {
                         Ok(f) => f,
                         Err(e) => {
                             println!(
-                                "could not parse frontmatter for {:}: {:}",
+                                "could not parse frontmatter for {}: {e}",
                                 fm.path().display(),
-                                e,
                             );
-                            return Err(Error::new(
-                                std::io::ErrorKind::Other,
-                                "could not parse frontmatter",
-                            ));
+                            return Err(anyhow::anyhow!("could not parse frontmatter: {e}"));
                         }
                     };
 
@@ -62,11 +57,8 @@ fn find_all_publications() -> Result<Vec<Publication>, std::io::Error> {
                 }
             }
             Err(e) => {
-                println!("{:}", e); // we're just going to print the error for now
-                return Err(Error::new(
-                    std::io::ErrorKind::NotFound,
-                    "could not locate frontmatter",
-                ));
+                println!("{e:}"); // we're just going to print the error for now
+                return Err(anyhow::anyhow!("could not locate frontmatter: {e}"));
             }
         }
     }
@@ -79,12 +71,20 @@ fn find_all_publications() -> Result<Vec<Publication>, std::io::Error> {
 #[get("/publications")]
 pub async fn publications(templates: web::Data<tera::Tera>) -> impl Responder {
     let mut context = tera::Context::new();
-    let publications = find_all_publications().unwrap();
+    let publications = match find_all_publications() {
+        Ok(pubs) => pubs,
+        Err(e) => {
+            println!("{e:?}");
+            return HttpResponse::InternalServerError()
+                .content_type("text/html")
+                .body("<p>Something went wrong!</p>");
+        }
+    };
     context.insert("publications", &publications);
     match templates.render("publications.html", &context) {
         Ok(s) => HttpResponse::Ok().content_type("text/html").body(s),
         Err(e) => {
-            println!("{:?}", e);
+            println!("{e:?}");
             HttpResponse::InternalServerError()
                 .content_type("text/html")
                 .body("<p>Something went wrong!</p>")

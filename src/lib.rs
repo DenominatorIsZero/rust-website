@@ -11,7 +11,7 @@ lazy_static! {
         let mut tera = match Tera::new("templates/**/*.html") {
             Ok(t) => t,
             Err(e) => {
-                println!("Parsing error(s): {}", e);
+                println!("Parsing error(s): {e}");
                 ::std::process::exit(1);
             }
         };
@@ -20,7 +20,7 @@ lazy_static! {
     };
 }
 
-pub fn start_blog(listener: TcpListener) -> Result<Server, std::io::Error> {
+pub fn start_blog(listener: TcpListener) -> anyhow::Result<Server> {
     let srv = HttpServer::new(move || {
         App::new()
             .app_data(web::Data::new(TEMPLATES.clone()))
