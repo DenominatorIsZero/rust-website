@@ -4,29 +4,56 @@
 # For more help, visit the .dockerignore file reference guide at
 # https://docs.docker.com/go/build-context-dockerignore/
 
-**/.DS_Store
-**/.classpath
-**/.dockerignore
-**/.env
+# Development and build artifacts
+target/
+/bin
+**/node_modules
+
+# Version control and development tools
 **/.git
 **/.gitignore
+**/.vscode
+**/.vs
+**/.idea
+justfile
+
+# Documentation and metadata (not needed in container)
+LICENSE
+README.md
+readme.md
+CLAUDE.md
+docs/
+
+# Security sensitive files
+**/.env
+**/.env.*
+**/secrets.dev.yaml
+**/values.dev.yaml
+**/*.key
+**/*.pem
+**/*.p12
+
+# OS and editor files
+**/.DS_Store
+**/.classpath
 **/.project
 **/.settings
 **/.toolstarget
-**/.vs
-**/.vscode
 **/*.*proj.user
 **/*.dbmdl
 **/*.jfm
-**/charts
+**/npm-debug.log
+*.log
+*.tmp
+*.bak
+*~
+
+# Container and CI files
 **/docker-compose*
 **/compose.y*ml
 **/Dockerfile*
-**/node_modules
-**/npm-debug.log
-**/secrets.dev.yaml
-**/values.dev.yaml
-/bin
-/target
-LICENSE
-README.md
+**/.dockerignore
+**/charts
+
+# Development specific directories
+tailwind/

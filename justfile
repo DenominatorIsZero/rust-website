@@ -73,8 +73,12 @@ lint:
 test:
     cargo test
 
-# Run all quality checks
-check: fmt lint test
+# Run security audit
+audit:
+    cargo audit
+
+# Run all quality checks including security
+check: fmt lint test audit
 
 # Prepare for deployment (build CSS and release binary)
 publish: css-build build-release
