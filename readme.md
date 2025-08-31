@@ -155,12 +155,36 @@ This project follows a systematic AI-assisted development approach:
 
 Templates and documentation for this workflow are available in `docs/projects/template/`.
 
+## Security
+
+This project follows security best practices for web applications:
+
+### Security Features
+
+- **Dependency Scanning**: Regular vulnerability audits with `cargo audit`
+- **Template Security**: Tera templating with HTML auto-escaping enabled
+- **Static Assets**: Secure serving with appropriate caching headers
+- **Model Safety**: Uses .safetensors format for AI models to prevent arbitrary code execution
+- **GDPR Compliance**: Privacy-first analytics with explicit user consent
+
+### Security Practices
+
+- Dependencies are regularly updated and audited for vulnerabilities
+- Input validation and sanitization on all user-facing endpoints
+- Error handling that prevents information disclosure
+- Secure static file serving configuration
+
+### Reporting Vulnerabilities
+
+If you discover security issues, please report them responsibly:
+
+- **Contact**: [Erik Engelhardt on LinkedIn](https://www.linkedin.com/in/erik-engelhardt-65b1091a7/)
+
 ## Contributing
 
 This is primarily a personal learning project, but I welcome feedback and suggestions!
 
 - **Bug Reports**: Feel free to open an issue
-- **Security Issues**: Please contact me privately via LinkedIn
 - **General Questions**: Happy to discuss the technical approach
 
 For detailed contributing guidelines, see `CONTRIBUTING.md` (coming soon).
