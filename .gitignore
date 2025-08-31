@@ -1,3 +1,48 @@
+# Rust
 **/target/**
+**/*.rs.bk
+*.pdb
+*.exe
+
+# Website build artifacts
+static/css/index.css
 **/node_modules/**
-**.ds_store
+
+# Docker deployment artifacts
+*.tar
+
+# IDE and Editors
+.vscode/
+.idea/
+.fleet/
+*.swp
+*.swo
+*~
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and debugging
+*.log
+debug/
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Environment files (security)
+.env
+.env.local
+.env.*.local
+
+# Development artifacts
+.sass-cache/
+.parcel-cache/
