@@ -187,7 +187,7 @@ This is primarily a personal learning project, but I welcome feedback and sugges
 - **Bug Reports**: Feel free to open an issue
 - **General Questions**: Happy to discuss the technical approach
 
-For detailed contributing guidelines, see `CONTRIBUTING.md` (coming soon).
+For detailed contributing guidelines, see `CONTRIBUTING.md`.
 
 ## Background
 
