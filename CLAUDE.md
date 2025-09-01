@@ -262,6 +262,7 @@ This standardized approach ensures consistent development patterns, code reuse o
 - Test Docker builds regularly for deployment readiness
 - Maintain privacy compliance and GDPR requirements
 - Verify PostHog analytics integration works correctly
+- Follow security best practices documented in `docs/security.md`
 
 ## AI-Assisted Development Workflow
 

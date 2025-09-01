@@ -1,6 +1,6 @@
 use std::net::TcpListener;
 
-use personal_website::start_blog;
+use personal_website::start_server;
 
 #[actix_web::main]
 async fn main() -> anyhow::Result<()> {
@@ -8,6 +8,6 @@ async fn main() -> anyhow::Result<()> {
     env_logger::init();
 
     let listener = TcpListener::bind("0.0.0.0:8080")?;
-    start_blog(listener)?.await?;
+    start_server(listener)?.await?;
     Ok(())
 }

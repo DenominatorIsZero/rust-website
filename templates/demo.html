@@ -36,8 +36,7 @@
                 {% if demo_context.thumbnail_exists %}
                 <img src="{{ demo_context.demo.thumbnail }}" 
                      alt="{{ demo_context.demo.title }} thumbnail"
-                     class="w-full h-auto cursor-pointer"
-                     onclick="openModal(this)">
+                     class="w-full h-auto cursor-pointer">
                 {% else %}
                 <div class="demo-thumbnail-placeholder h-32">
                     <span class="text-sm text-gray-400">No thumbnail available</span>
