@@ -1,0 +1,42 @@
+/* Shared CSS for WASM AI Demos */
+/* Provides consistent styling across all demo iframes */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2c3e50;
+    box-sizing: border-box;
+}
+
+canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+/* Error message styling for demo failures */
+.demo-error {
+    color: white;
+    text-align: center;
+    padding: 50px;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.demo-error h2 {
+    margin: 0 0 20px 0;
+    font-size: 1.5em;
+}
+
+.demo-error p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.demo-error-hint {
+    margin-top: 20px !important;
+    font-size: 0.9em !important;
+}
