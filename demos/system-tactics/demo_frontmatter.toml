@@ -1,0 +1,18 @@
+# System-Tactics: Tactical RPG Demo
+# A turn-based tactical RPG with hex-grid combat and unique god evolution mechanics
+# Built with Bevy game engine, compiled to WebAssembly for browser play
+
+title = "System-Tactics"
+description = "Early-stage development of a tactical RPG inspired by Final Fantasy Tactics. Currently showcases a 3D hex-grid level with basic camera controls. Future plans include turn-based combat, god evolution mechanics, and System Apocalypse setting. Built with Bevy and compiled to WebAssembly."
+instructions = "Controls: WASD to move camera, Q/E to rotate, mouse wheel to zoom. Arrow Left/Right to switch between levels. This is an early technical demo showing the foundational rendering and navigation systems. Combat and gameplay mechanics are not yet implemented."
+status = "in_progress"
+date = "2025-11-29"
+wasm_path = "/static/wasm/system-tactics/index.html"
+repository = "https://github.com/DenominatorIsZero/system-tactics"
+thumbnail = "/static/img/demos/system_tactics.png"
+demo_type = "Interactive Game"
+tech_stack = ["Bevy", "WASM", "Rust", "Hexx"]
+keywords = ["game-dev", "tactical-rpg", "hex-grid", "bevy", "wasm", "fft-inspired", "god-evolution", "system-apocalypse"]
+model_size = "N/A (game demo, not ML model)"
+browser_requirements = "WebAssembly support, modern browser, 200MB RAM recommended"
+performance_notes = "Early development build. May have longer initial load time. Optimizations planned for future releases."
